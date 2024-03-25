@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, END
 import sqlite3
 
 
@@ -123,16 +123,58 @@ def speichern():
    # Durch den "commit" werden die änderungen dauerhaft gespeichert
    verbindung.commit()
 
+   # Die Kundennummer abrufen und im ENtry anzeigen
+   # Den Primärschlüssel abrufen & in einer Variable speichern. Dazu nutzt man "lastrowid". Lastrowid gibt den Wert des zuletzt eingefügten Primärschlüssels zurück (integer).
+   primärschlüssel = der_curser.lastrowid
+   # Jetzt wird der Zusatz "KD" hinzugefügt, was dann die Kundennumer ergibt
+   kundennummer = str(primärschlüssel) + "KD"
+   # Löscht den aktuellen Inhalt
+   kundennummer_label_ausgabe.config(text=" ")
+   # Fügt die Kundennummer ein
+   kundennummer_label_ausgabe.config(text=kundennummer)
+
+   # Durch den "commit" werden die änderungen dauerhaft gespeichert
+   verbindung.commit()
+
    # Niemals vergessen die Verbidnung nach gebrauch zu schließen
    verbindung.close()
+
+def neuer_kunde():
+   # Setzt den Text wieder auf Stadart zurück
+   kundennummer_label_ausgabe.config(text="Wird automatisch generiert")
+   # Mit "set" setzten wir den Inhalt der Combobox auf einen lehren String
+   anrede_combobox.set(" ")
+   # "0" und "END" beziehen sich auf den Index der Zeichen in dem Entry Widget. END Ziehlt auf ein undifiniertes Ende. 
+   vorname_entry.delete(0, END)
+   nachname_entry.delete(0, END)
+   strasse_entry.delete(0, END)
+   hausnummer_entry.delete(0, END)
+   plz_entry.delete(0, END)
+   stadt_entry.delete(0, END)
+
+def tabelleninhalt_anzeigen():
+   # Verbindung zur Datenbank aufbauen
+   verbindung = sqlite3.connect("Order_Flow/data.db")
+   # Der Curser führt z.B. SQL Abfragen aus
+   der_curser = verbindung.cursor()
+    # Ausführen einer Abfrage, um alle Inhalte der Tabelle anzuzeigen
+   der_curser.execute("SELECT * FROM Kunden")
+   # "fetchall" Zieht sich alle Infos einer Tabelle und speichert die einzelenen Zeilen als Tupel
+   daten = der_curser.fetchall()
+   # Schließen der Verbindung zur Datenbank
+   verbindung.close()
+   print(daten)
 
 
 # Test Buttons
 btn1 = ttk.Button(tab1, text="Speichern", command=speichern)
 btn1.grid(row=0, column=1)
 
-btn2 = ttk.Button(tab1, text="Anzeigen")
+btn2 = ttk.Button(tab1, text="Anzeigen", command=tabelleninhalt_anzeigen)
 btn2.grid(row=0, column=2)
+
+btn3 = ttk.Button(tab1, text="Neuer Kunde", command=neuer_kunde)
+btn3.grid(row=1, column=1, sticky="n")
 
 
 # Sizegrip-Widget hinzufügen
