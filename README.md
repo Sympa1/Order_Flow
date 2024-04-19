@@ -13,6 +13,8 @@ SQL Server, sofern man mit mehreren gleichzeitig darauf zuge reifen möchte.
 Das aktuelle GUI wird Step by Step auf- und ausgebaut. Teilweise gibt es noch Platzhalter, oder Elemente die Testweise 
 eingebaut sind.
 # Updates 
+- 19.04.2024 → Leichte strukturelle Anpassungen im Quellcode. Vorbereitende Maßnahmen für die Funktionen des "Main Fenster" 
+  bezüglich des Kunden Tabs.
 - 11.04.2024 → Die neuen Kunden legt man nun per Klick auf den Button "Neuer Kunde" an. Es folgt ein Pop-up-Fenster zur 
   eingabe der Kundendaten. Die "Newsletter" Checkbox ist aktuell noch ohne Funktion, bis ich einen sinnvollen weg zur 
   implementierung der funktion dahinter gefunden habe.

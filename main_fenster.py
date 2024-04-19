@@ -2,8 +2,28 @@ import tkinter as tk
 from tkinter import ttk, END
 import sqlite3
 from neuer_kunde_fenster import *
+from main_fenster_funktionen import *
+
 
 # mit "state="readonly"" kann ich nutzereingaben bei entry feldern blockieren
+
+# Funktionen
+def on_click_neuer_kunde(root):
+	"""Diese Funktion ruf die Funktion "neuer_kunde" in der Datei "neuer_kunde_window" auf"""
+	neuer_kunde_popup(root)
+
+
+def on_click_kunden_suchen(kundennummer_entry):
+	"""Diese Funktion ruf die Funktion "kunde_suchen" in der Datei "main_window_funktionen" auf"""
+	kunde_suchen(kundennummer_entry)
+
+
+def on_click_kunde_aendern(anrede_combobox, vorname_entry, nachname_entry, strasse_entry, hausnummer_entry, plz_entry,
+						   stadt_entry, telefon_entry, mobil_entry, mail_entry):
+	"""Diese Funktion ruf die Funktion "kunde_aendern" in der Datei "main_window_funktionen" auf"""
+	kunde_aendern(anrede_combobox, vorname_entry, nachname_entry, strasse_entry, hausnummer_entry, plz_entry,
+				  stadt_entry, telefon_entry, mobil_entry, mail_entry)
+
 
 root = tk.Tk()
 root.title("Order Flow")
@@ -33,7 +53,7 @@ kundennummer_entry = ttk.Entry(kundennummer_label_frame, width=43)
 kundennummer_entry.grid(row=0, column=0, pady=5, padx=5, sticky="w")
 
 # Füge den Default-Text in das Entry-Widget ein
-kundennummer_entry.insert(0, "Die Kundennummer wird automatisch generiert!")
+kundennummer_entry.insert(0, "Zum Suchen, bitte KD-Nummer eingeben!")
 
 # Hinzufügen des Abschnitts "Anschrift"
 anschrift_label_frame = ttk.LabelFrame(kunden_tab, text="Anschrift:")
@@ -43,11 +63,11 @@ anschrift_label_frame.grid(row=1, column=0, padx=5, pady=5)
 anrede_label = ttk.Label(anschrift_label_frame, text="Anrede:")
 anrede_label.grid(row=2, column=0, pady=5, padx=10, sticky="w")
 anrede_combobox = ttk.Combobox(
-    anschrift_label_frame,
-    cursor="hand2",
-    state="readonly",
-    values=["Herr", "Frau", "Divers"],
-    width=17
+	anschrift_label_frame,
+	cursor="hand2",
+	state="readonly",
+	values=["Herr", "Frau", "Divers"],
+	width=17
 )
 anrede_combobox.grid(row=3, column=0)
 
@@ -75,7 +95,7 @@ hausnummer_entry.grid(row=10, column=1)
 plz_label = ttk.Label(anschrift_label_frame, text="PLZ:")
 plz_label.grid(row=13, column=0, sticky="w", padx=5)
 plz_entry = ttk.Entry(anschrift_label_frame)
-plz_entry.grid(row=14, column=0, pady=(0, 5))
+plz_entry.grid(row=14, column=0, pady=(0, 5), padx=(3, 5))
 
 # Die verwendeten Tupel mit "pady" besagen in diesem Fall einen Abstand von "0px" nach oben und von "5px" nach unten
 # Die verwendeten Tupel mit "padx" besagen in diesem Fall einen Abstand von "0px" nach links und von "5px" nach rechts
@@ -89,43 +109,37 @@ kontakt_label_frame = ttk.LabelFrame(kunden_tab, text="Kontaktdaten:")
 kontakt_label_frame.grid(row=1, column=1, padx=5, pady=5, sticky="n")
 
 telefon_label = ttk.Label(kontakt_label_frame, text="Telefonnummer:")
-telefon_label.grid(row=0, column=0, sticky="w", padx=10)
+telefon_label.grid(row=0, column=0, sticky="w", padx=5, pady=5)
 telefon_entry = ttk.Entry(kontakt_label_frame)
 telefon_entry.grid(row=1, column=0)
 
 mobil_label = ttk.Label(kontakt_label_frame, text="Mobilnummer:")
-mobil_label.grid(row=2, column=0)
+mobil_label.grid(row=2, column=0, padx=5, sticky="w")
 mobil_entry = ttk.Entry(kontakt_label_frame)
 mobil_entry.grid(row=3, column=0)
 
 mail_label = ttk.Label(kontakt_label_frame, text="E-Mail")
-mail_label.grid(row=4, column=0)
+mail_label.grid(row=4, column=0, sticky="w", padx="5")
 mail_entry = ttk.Entry(kontakt_label_frame)
-mail_entry.grid(row=5, column=0)
+mail_entry.grid(row=5, column=0, padx=3)
 
-# Mit "tkinter.BooleanVar()" erstellt amn ein "Variable" die den Status von z.B. Checkboxen (True/False) speichert
+# Mit "tkinter. BooleanVar()" erstellt amn ein "Variable" die den Status von z.B. Checkboxen (True/False) speichert
 checkbox_status = tkinter.BooleanVar()
-newsletter_checkbox = ttk.Checkbutton(kunden_tab, text="Newsletter", variable=checkbox_status)
-newsletter_checkbox.grid(row=6, column=0, pady=(10, 5))
-
-
-# Funktionen
-def on_click_neuer_kunde():
-    neuer_kunde_popup(root)
-
-# def on_click_kunden_suchen():
-
-# def on_click_kunde_ändern():
-
+newsletter_checkbox = ttk.Checkbutton(kontakt_label_frame, text="Newsletter", variable=checkbox_status)
+newsletter_checkbox.grid(row=6, column=0, padx=5, pady=(20, 4))
 
 # Test Buttons
-btn1 = ttk.Button(kunden_tab, text="Suchen")
+btn1 = ttk.Button(kunden_tab, text="Suchen", command=lambda: on_click_kunden_suchen(kundennummer_entry))
 btn1.grid(row=0, column=2)
 
-btn2 = ttk.Button(kunden_tab, text="Ändern")
+btn2 = ttk.Button(kunden_tab, text="Ändern", command=lambda: on_click_kunde_aendern(anrede_combobox, vorname_entry,
+																					nachname_entry, strasse_entry,
+																					hausnummer_entry, plz_entry, stadt_entry,
+																					telefon_entry, mobil_entry, mail_entry))
 btn2.grid(row=0, column=3)
 
-btn3 = ttk.Button(kunden_tab, text="Neuer Kunde", command=on_click_neuer_kunde)
+# Die "lambda" Funktion wird verwendet, um die Parameterübergabe zu ermöglichen.
+btn3 = ttk.Button(kunden_tab, text="Neuer Kunde", command=lambda: on_click_neuer_kunde(root))
 btn3.grid(row=0, column=4)
 
 # Sizegrip-Widget hinzufügen
