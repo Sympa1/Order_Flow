@@ -1,5 +1,5 @@
 # Order_Flow
-Eine simple Softwarelösung um Kunden und Aufträge zu managen. Der Funktionsumfang soll folgende Punkte beinhalten: 1. Kunden 
+Eine simple Softwarelösung um Kunden und Aufträge zu verwalten. Der Funktionsumfang soll folgende Punkte beinhalten: 1. Kunden 
 anlegen, Kunden anhand des Namens/Kundennummer aufrufen, 3. Aufträge anlegen, 4. Aufträge aufrufen, 5. Aufträge als PDF 
 exportieren, 6. Artikel anlegen, 7. Artikel bezüglich der Aufträge aufrufen.
 Zwei Kunden sind vorangelegt (Jane Doe, Kundennummer 1 & Max Mustermann, Kundennummer 2). Die zwei vorab angelegten 
