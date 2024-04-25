@@ -2,7 +2,7 @@
 Eine simple Softwarelösung um Kunden und Aufträge zu verwalten. Der Funktionsumfang soll folgende Punkte beinhalten: 1. Kunden 
 anlegen, Kunden anhand des Namens/Kundennummer aufrufen, 3. Aufträge anlegen, 4. Aufträge aufrufen, 5. Aufträge als PDF 
 exportieren, 6. Artikel anlegen, 7. Artikel bezüglich der Aufträge aufrufen.
-Zwei Kunden sind vorangelegt (Jane Doe, Kundennummer 1 & Max Mustermann, Kundennummer 2). Die zwei vorab angelegten 
+Zwei Kunden sind vorangelegt (Maxime Musterfrau, Kundennummer 1 & Jane Doe, Kundennummer 2). Die zwei vorab angelegten 
 Kunden sind frei erfunden.
 Die Kundendatenbank ist bewusst mit einem 1 zu 1 Verhältnisse gesplittet. Dadurch soll z.B. die Datenkonsistenz, wenn sich 
 beispielsweise die Mobilfunknummer ändert sichergestellt werden. Auch soll dadurch die Effizienz gesteigert werden. Durch die 
@@ -13,6 +13,7 @@ SQL Server, sofern man mit mehreren gleichzeitig darauf zuge reifen möchte.
 Das aktuelle GUI wird Step by Step auf- und ausgebaut. Teilweise gibt es noch Platzhalter, oder Elemente die Testweise 
 eingebaut sind.
 # Updates 
+- 25.04.2024 → Kleinere strukturelle Anpassungen bezüglich der Funktionen, sowie hinzufüge der "Kunden suchen" Funktion.
 - 19.04.2024 → Leichte strukturelle Anpassungen im Quellcode. Vorbereitende Maßnahmen für die Funktionen des "Main Fenster" 
   bezüglich des Kunden Tabs.
 - 11.04.2024 → Die neuen Kunden legt man nun per Klick auf den Button "Neuer Kunde" an. Es folgt ein Pop-up-Fenster zur 

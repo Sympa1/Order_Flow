@@ -6,27 +6,6 @@ from neuer_kunde_funktionen import *
 def neuer_kunde_popup(root):
 	"""Diese Funktion erstellt ein Pop-up-Fenster, in dem man einen neuen Kunden Anlegen kann."""
 
-	# Funktionen
-	def on_click_abbrechen(neuer_kunde_fenster):
-		"""Übergibt die Variable "neuer_kunde_fenster"."""
-		neuer_kunden_fenster_destroy(neuer_kunde_fenster)
-
-	def on_click_speichern(anrede_combobox, vorname_entry, nachname_entry, strasse_entry, hausnummer_entry, plz_entry,
-						   stadt_entry, telefon_entry, mobil_entry, mail_entry):
-		"""Speichert die Nutzereingaben als "str" und übergibt diese an die Funktion "neuer_kunde_speichern"."""
-		anrede = anrede_combobox.get()
-		vorname = vorname_entry.get()
-		nachname = nachname_entry.get()
-		strasse = strasse_entry.get()
-		hausnummer = hausnummer_entry.get()
-		plz = plz_entry.get()
-		stadt = stadt_entry.get()
-		telefon = telefon_entry.get()
-		mobil = mobil_entry.get()
-		mail = mail_entry.get()
-		neuer_kunde_speichern(anrede, vorname, nachname, strasse, hausnummer, plz, stadt, telefon, mobil, mail,
-							  neuer_kunde_fenster)
-
 	neuer_kunde_fenster = tkinter.Toplevel(root)
 	neuer_kunde_fenster.title("Order Flow - Neuer Kunde")
 
@@ -118,14 +97,14 @@ def neuer_kunde_popup(root):
 	btn_frame = ttk.Frame(neuer_kunde_fenster)
 	btn_frame.grid(row=2, column=1, pady=15, padx=15, sticky="n")
 
-	btn_speichern = ttk.Button(btn_frame, text="Speichern", command=lambda: on_click_speichern(anrede_combobox, vorname_entry,
+	btn_speichern = ttk.Button(btn_frame, text="Speichern", command=lambda: neuer_kunde_speichern(anrede_combobox, vorname_entry, 
 																							   nachname_entry, strasse_entry,
 																							   hausnummer_entry, plz_entry,
 																							   stadt_entry, telefon_entry,
 																							   mobil_entry, mail_entry))
 	btn_speichern.grid(row=0, column=0, sticky="n")
 
-	btn_speichern = ttk.Button(btn_frame, text="Abbrechen", command=lambda: on_click_abbrechen(neuer_kunde_fenster))
+	btn_speichern = ttk.Button(btn_frame, text="Abbrechen", command=lambda: neuer_kunden_fenster_destroy(neuer_kunde_fenster))
 	btn_speichern.grid(row=0, column=1, sticky="n")
 
 	# Sizegrip-Widget hinzufügen

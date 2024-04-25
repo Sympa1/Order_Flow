@@ -8,10 +8,22 @@ def neuer_kunden_fenster_destroy(neuer_kunde_fenster):
     neuer_kunde_fenster.destroy()
 
 
-def neuer_kunde_speichern(anrede, vorname, nachname, strasse, hausnummer, plz, stadt, telefon, mobil, mail, neuer_kunde_fenster):
-    """Die Nutzereingaben werden an diese Funktion als "str" übergeben und per SQL Script in der Datenbank gespeichert. Sollte
+def neuer_kunde_speichern(anrede_combobox, vorname_entry, nachname_entry, strasse_entry, hausnummer_entry, plz_entry, stadt_entry, telefon_entry, mobil_entry, mail_entry):
+    """Die Nutzereingaben werden an diese Funktion übergeben, als "str" zwischengespeichert und per SQL Script in der Datenbank gespeichert. Sollte
     Datenbank noch nicht bestehen, wird sie erstellt. Im Anschluss wird das Pop-up-Fenster "Neuer Kunde" mit der Funktion
     "neuer_kunde_fenster_destroy" geschlossen"""
+
+    anrede = anrede_combobox.get()
+    vorname = vorname_entry.get()
+    nachname = nachname_entry.get()
+    strasse = strasse_entry.get()
+    hausnummer = hausnummer_entry.get()
+    plz = plz_entry.get()
+    stadt = stadt_entry.get()
+    telefon = telefon_entry.get()
+    mobil = mobil_entry.get()
+    mail = mail_entry.get()
+
     print(anrede, vorname, nachname, strasse, hausnummer, plz, stadt, telefon, mobil, mail)
 
     # SQL Code
