@@ -13,6 +13,7 @@ SQL Server, sofern man mit mehreren gleichzeitig darauf zuge reifen möchte.
 Das aktuelle GUI wird Step by Step auf- und ausgebaut. Teilweise gibt es noch Platzhalter, oder Elemente die Testweise 
 eingebaut sind.
 # Updates 
+- 01.05.2024 → Hinzufügen einer Menübar im Hauptfenster als vorbereitung zur Verwaltung von Artikeln/Dienstleistungen.
 - 25.04.2024 → Kleinere strukturelle Anpassungen bezüglich der Funktionen, sowie hinzufüge der "Kunden suchen" Funktion.
 - 19.04.2024 → Leichte strukturelle Anpassungen im Quellcode. Vorbereitende Maßnahmen für die Funktionen des "Main Fenster" 
   bezüglich des Kunden Tabs.

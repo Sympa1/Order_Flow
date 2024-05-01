@@ -1,15 +1,31 @@
 import tkinter as tk
 from tkinter import ttk, END
+from tkinter import *
 from neuer_kunde_fenster import *
 from main_fenster_funktionen import *
-
-
-# mit "state="readonly" kann ich nutzereingaben bei entry feldern blockieren
+from artikel_bearbeiten_fenster import *
 
 
 root = tk.Tk()
 root.title("Order Flow")
-# root.geometry("600x310")
+
+
+# Erstellen des Optionen-Menüs
+menue_leiste = Menu(root)
+# Zuweisen des Optionen-Menüs zum Root Fenster
+root.config(menu=menue_leiste)
+
+# Erstellen Optionen Menü "Gruppen"
+# tearoff=0 verhindert das Abtrennen des Menüs
+datei_menue = Menu(menue_leiste, tearoff=0)
+bearbeiten_menue = Menu(menue_leiste, tearoff=0)
+# Mit der Cascade ersten wir eine Art "Gruppe" zur auswahl mehere Optionen z.B. speichern oder öffnen
+menue_leiste.add_cascade(label="Datei - Placeholder", menu=datei_menue)
+menue_leiste.add_cascade(label="Bearbeiten", menu=bearbeiten_menue)
+
+# Hinzufügen der möglichen Optionen zu der Gruppe, nebst command Befehl
+datei_menue.add_command(label="Öffnen - Placeholder")
+bearbeiten_menue.add_command(label="Artikel Bearbeiten", command=lambda: artikel_bearbeiten_popup(root))
 
 # Erstellen des Notebook Widgets
 notebook_widget = ttk.Notebook(root)
