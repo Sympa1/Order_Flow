@@ -1,6 +1,6 @@
 # Order_Flow
 Eine simple Softwarelösung um Kunden und Aufträge zu verwalten. Der Funktionsumfang soll folgende Punkte beinhalten: 1. Kunden 
-anlegen, Kunden anhand des Namens/Kundennummer aufrufen, 3. Aufträge anlegen, 4. Aufträge aufrufen, 5. Aufträge als PDF 
+anlegen, 2. Kunden anhand des Namens/Kundennummer aufrufen, 3. Aufträge anlegen, 4. Aufträge aufrufen, 5. Aufträge als PDF 
 exportieren, 6. Artikel anlegen, 7. Artikel bezüglich der Aufträge aufrufen.
 Zwei Kunden sind vorangelegt (Maxime Musterfrau, Kundennummer 1 & Jane Doe, Kundennummer 2). Die zwei vorab angelegten 
 Kunden sind frei erfunden.
@@ -13,6 +13,8 @@ SQL Server, sofern man mit mehreren gleichzeitig darauf zuge reifen möchte.
 Das aktuelle GUI wird Step by Step auf- und ausgebaut. Teilweise gibt es noch Platzhalter, oder Elemente die Testweise 
 eingebaut sind.
 # Updates 
+- 11.05.2024 → Im Main Fenster ist es nun möglich Kunden aufzurufen und deren Daten dauerhaft zu ändern. Das GUI für das 
+  Pop-up-Fenster umd Artikel/Dienstleistungen hinzuzufügen wurde erstellt. Die Funktion dazu folgt.
 - 01.05.2024 → Hinzufügen einer Menübar im Hauptfenster als vorbereitung zur Verwaltung von Artikeln/Dienstleistungen.
 - 25.04.2024 → Kleinere strukturelle Anpassungen bezüglich der Funktionen, sowie hinzufüge der "Kunden suchen" Funktion.
 - 19.04.2024 → Leichte strukturelle Anpassungen im Quellcode. Vorbereitende Maßnahmen für die Funktionen des "Main Fenster" 
