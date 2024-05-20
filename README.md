@@ -13,6 +13,9 @@ SQL Server, sofern man mit mehreren gleichzeitig darauf zuge reifen möchte.
 Das aktuelle GUI wird Step by Step auf- und ausgebaut. Teilweise gibt es noch Platzhalter, oder Elemente die Testweise 
 eingebaut sind.
 # Updates 
+- xx.xx.xxxx → Das Pop-up-Fenster "Artikel hinzufügen" wurde optisch aufbereitet inkl. das Hinzufügen der Steuerbuttons.
+  Die Funktion (fenster_destroy) wurde in eine eigene Datei ausgelagert. Die Funktionalität neue Artikel einzugeben und zu 
+  speichern ist hinzugefügt. Den EK & VK kann mit Punkt oder mit Komma eingeben. Ein Datenbank ERM wurde hinzugefügt.
 - 11.05.2024 → Im Main Fenster ist es nun möglich Kunden aufzurufen und deren Daten dauerhaft zu ändern. Das GUI für das 
   Pop-up-Fenster umd Artikel/Dienstleistungen hinzuzufügen wurde erstellt. Die Funktion dazu folgt.
 - 01.05.2024 → Hinzufügen einer Menübar im Hauptfenster als vorbereitung zur Verwaltung von Artikeln/Dienstleistungen.

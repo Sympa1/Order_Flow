@@ -1,6 +1,7 @@
 import tkinter
 from tkinter import ttk, END
 from neuer_kunde_funktionen import *
+from fenster_destroy import *
 
 
 def neuer_kunde_popup(root):
@@ -101,10 +102,10 @@ def neuer_kunde_popup(root):
 																							   nachname_entry, strasse_entry,
 																							   hausnummer_entry, plz_entry,
 																							   stadt_entry, telefon_entry,
-																							   mobil_entry, mail_entry))
+																							   mobil_entry, mail_entry, neuer_kunde_fenster))
 	btn_speichern.grid(row=0, column=0, sticky="n")
 
-	btn_speichern = ttk.Button(btn_frame, text="Abbrechen", command=lambda: neuer_kunden_fenster_destroy(neuer_kunde_fenster))
+	btn_speichern = ttk.Button(btn_frame, text="Abbrechen", command=lambda: fenster_destroy(neuer_kunde_fenster))
 	btn_speichern.grid(row=0, column=1, sticky="n")
 
 	# Sizegrip-Widget hinzufügen

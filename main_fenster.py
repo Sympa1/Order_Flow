@@ -26,7 +26,7 @@ menue_leiste.add_cascade(label="Bearbeiten", menu=bearbeiten_menue)
 
 # Hinzufügen der möglichen Optionen zu der Gruppe, nebst command Befehl
 datei_menue.add_command(label="Öffnen - Placeholder")
-bearbeiten_menue.add_command(label="Artikel hinzufügen", command=lambda: artikel_hinzufügen_popup(root))
+bearbeiten_menue.add_command(label="Artikel hinzufügen", command=lambda: artikel_hinzufuegen_popup(root))
 bearbeiten_menue.add_command(label="Artikel bearbeiten", command=lambda: artikel_bearbeiten_popup(root))
 
 # Erstellen des Notebook Widgets
