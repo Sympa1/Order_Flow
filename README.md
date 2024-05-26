@@ -12,7 +12,9 @@ sich einfach in einer locale Datei, was das Arbeiten mit GitHub/mehreren PCs deu
 SQL Server, sofern man mit mehreren gleichzeitig darauf zuge reifen möchte.
 Das aktuelle GUI wird Step by Step auf- und ausgebaut. Teilweise gibt es noch Platzhalter, oder Elemente die Testweise 
 eingebaut sind.
-# Updates 
+# Updates
+- 26.05.2024 → Verlinkung der oberen Menüleiste zum "Neuer Kunde Pop-up-Fenster hinzugefügt". Anfänge des "Artikel bearbeiten" 
+  Tabs sind hinzugefügt.
 - 20.05.2024 → Das Pop-up-Fenster "Artikel hinzufügen" wurde optisch aufbereitet inkl. das Hinzufügen der Steuerbuttons.
   Die Funktion (fenster_destroy) wurde in eine eigene Datei ausgelagert. Die Funktionalität neue Artikel einzugeben und zu 
   speichern ist hinzugefügt. Den EK & VK kann mit Punkt oder mit Komma eingeben. Ein Datenbank ERM wurde hinzugefügt.

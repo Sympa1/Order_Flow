@@ -1,5 +1,3 @@
-# from typing import Tuple, Any
-
 from fenster_destroy import *
 import sqlite3
 

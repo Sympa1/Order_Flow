@@ -17,12 +17,12 @@ def artikel_hinzufuegen_popup(root):
     artikel_label_frame = ttk.LabelFrame(artikel_hinzufügen_fenster, text="Artikel:")
     artikel_label_frame.grid(row=0, column=0, pady=5, padx=5, sticky="w")
 
-    bezeichnung_label = ttk.Label(artikel_label_frame, text="Bezeichnung:")
+    bezeichnung_label = ttk.Label(artikel_label_frame, text="Artikel Bezeichnung:")
     bezeichnung_label.grid(row=0, column=0, padx=5, sticky="w")
     bezeichnung_entry = ttk.Entry(artikel_label_frame)
     bezeichnung_entry.grid(row=1, column=0, padx=5)
 
-    beschreibung_label = ttk.Label(artikel_label_frame, text="Beschreibung:")
+    beschreibung_label = ttk.Label(artikel_label_frame, text="Artikel Beschreibung:")
     beschreibung_label.grid(row=2, column=0, padx=5, sticky="w")
     beschreibung_entry = ttk.Entry(artikel_label_frame)
     beschreibung_entry.grid(row=3, column=0, padx=5)

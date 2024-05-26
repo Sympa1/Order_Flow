@@ -6,10 +6,8 @@ from main_fenster_funktionen import *
 from artikel_bearbeiten_fenster import *
 from artikel_hinzufügen_fenster import *
 
-
 root = tk.Tk()
 root.title("Order Flow")
-
 
 # Erstellen des Optionen-Menüs
 menue_leiste = Menu(root)
@@ -27,7 +25,7 @@ menue_leiste.add_cascade(label="Bearbeiten", menu=bearbeiten_menue)
 # Hinzufügen der möglichen Optionen zu der Gruppe, nebst command Befehl
 datei_menue.add_command(label="Öffnen - Placeholder")
 bearbeiten_menue.add_command(label="Artikel hinzufügen", command=lambda: artikel_hinzufuegen_popup(root))
-bearbeiten_menue.add_command(label="Artikel bearbeiten", command=lambda: artikel_bearbeiten_popup(root))
+bearbeiten_menue.add_command(label="Kunden hinzufügen", command=lambda: neuer_kunde_popup(root))
 
 # Erstellen des Notebook Widgets
 notebook_widget = ttk.Notebook(root)
@@ -35,18 +33,19 @@ notebook_widget = ttk.Notebook(root)
 # Erstellen der einzelnen Tabs als Frame
 kunden_tab = ttk.Frame(notebook_widget)
 auftraege_tab = ttk.Frame(notebook_widget)
-tab3 = ttk.Frame(notebook_widget)
+artikel_tab = ttk.Frame(notebook_widget)
 # Erstellen und hinzufügen der Registerkarten
 
 notebook_widget.add(kunden_tab, text="Kunden")
 notebook_widget.add(auftraege_tab, text="Aufträge")
-notebook_widget.add(tab3, text="Placeholder")  # Ggf. für Artikel?
+notebook_widget.add(artikel_tab, text="Artikel")  # Ggf. für Artikel?
 
 # "Expand" & "Fill" sorgen gemeinsam dafür, dass das Notebook Widget die gesamte verfügbare Fläche ausfüllt
 notebook_widget.pack(expand=True, fill="both", padx=12, pady=12)
 
+"""Kunden Tab"""
 # Hinzufügen des Abschnitts "Kundennummer"
-kundennummer_label_frame = ttk.LabelFrame(kunden_tab, text="Kundennummer:")
+kundennummer_label_frame = ttk.LabelFrame(kunden_tab, text="Kundennummer")
 kundennummer_label_frame.grid(row=0, column=0, pady=5, padx=5, sticky="w")
 
 kundennummer_entry = ttk.Entry(kundennummer_label_frame, width=43)
@@ -56,18 +55,18 @@ kundennummer_entry.grid(row=0, column=0, pady=5, padx=5, sticky="w")
 kundennummer_entry.insert(0, "Zum Suchen, bitte KD-Nummer eingeben!")
 
 # Hinzufügen des Abschnitts "Anschrift"
-anschrift_label_frame = ttk.LabelFrame(kunden_tab, text="Anschrift:")
+anschrift_label_frame = ttk.LabelFrame(kunden_tab, text="Anschrift")
 anschrift_label_frame.grid(row=1, column=0, padx=5, pady=5)
 
 # Mit der Option "width" habe ich die "Breite in Zeichen" der Combobox festgelegt
 anrede_label = ttk.Label(anschrift_label_frame, text="Anrede:")
 anrede_label.grid(row=2, column=0, pady=5, padx=10, sticky="w")
 anrede_combobox = ttk.Combobox(
-	anschrift_label_frame,
-	cursor="hand2",
-	state="readonly",
-	values=["Herr", "Frau", "Divers"],
-	width=17
+    anschrift_label_frame,
+    cursor="hand2",
+    state="readonly",
+    values=["Herr", "Frau", "Divers"],
+    width=17
 )
 anrede_combobox.grid(row=3, column=0)
 
@@ -105,7 +104,7 @@ stadt_entry = ttk.Entry(anschrift_label_frame)
 stadt_entry.grid(row=14, column=1, pady=(0, 5), padx=(0, 5))
 
 # Hinzufügen des Abschnitts "Kontakt"
-kontakt_label_frame = ttk.LabelFrame(kunden_tab, text="Kontaktdaten:")
+kontakt_label_frame = ttk.LabelFrame(kunden_tab, text="Kontaktdaten")
 kontakt_label_frame.grid(row=1, column=1, padx=5, pady=5, sticky="n")
 
 telefon_label = ttk.Label(kontakt_label_frame, text="Telefonnummer:")
@@ -118,7 +117,7 @@ mobil_label.grid(row=2, column=0, padx=5, sticky="w")
 mobil_entry = ttk.Entry(kontakt_label_frame)
 mobil_entry.grid(row=3, column=0)
 
-mail_label = ttk.Label(kontakt_label_frame, text="E-Mail")
+mail_label = ttk.Label(kontakt_label_frame, text="E-Mail:")
 mail_label.grid(row=4, column=0, sticky="w", padx="5")
 mail_entry = ttk.Entry(kontakt_label_frame)
 mail_entry.grid(row=5, column=0, padx=3)
@@ -131,19 +130,42 @@ newsletter_checkbox.grid(row=6, column=0, padx=5, pady=(20, 4))
 # Test Buttons
 # Die "lambda" Funktion wird verwendet, um die Parameterübergabe zu ermöglichen.
 btn1 = ttk.Button(kunden_tab, text="Suchen", command=lambda: kunde_suchen(kundennummer_entry, anrede_combobox, vorname_entry,
-																		  nachname_entry, strasse_entry, hausnummer_entry,
-																		  plz_entry, stadt_entry, telefon_entry, mobil_entry,
-																		  mail_entry))
+                                                                          nachname_entry, strasse_entry, hausnummer_entry,
+                                                                          plz_entry, stadt_entry, telefon_entry, mobil_entry,
+                                                                          mail_entry))
 btn1.grid(row=0, column=2)
 
 btn2 = ttk.Button(kunden_tab, text="Ändern", command=lambda: kunde_aendern(kundennummer_entry, anrede_combobox, vorname_entry,
-																					nachname_entry, strasse_entry, hausnummer_entry,
-                                                                                    plz_entry, stadt_entry,telefon_entry, mobil_entry,
-                                                                                    mail_entry))
+                                                                           nachname_entry, strasse_entry, hausnummer_entry,
+                                                                           plz_entry, stadt_entry, telefon_entry, mobil_entry,
+                                                                           mail_entry))
 btn2.grid(row=0, column=3)
 
 btn3 = ttk.Button(kunden_tab, text="Neuer Kunde", command=lambda: neuer_kunde_popup(root))
 btn3.grid(row=0, column=4)
+
+"""Aufträge Tab"""
+
+"""Artikel Tab"""
+art_nummer_frame = ttk.LabelFrame(artikel_tab, text="Artikelnummer")
+art_nummer_frame.grid(row=0, column=0, pady=5, padx=5, sticky="w")
+art_nummer_entry = ttk.Entry(art_nummer_frame, width=43)
+art_nummer_entry.grid(row=0, column=0, pady=5, padx=5, sticky="w")
+
+art_daten_frame = ttk.LabelFrame(artikel_tab, text="Artikeldaten")
+art_daten_frame.grid(row=1, column=0, pady=5, padx=5, sticky="w")
+
+#bezeichnung
+#beschreibung
+#lieferant
+
+art_bezeichnung = ttk.Label(art_daten_frame, text="Artikel Bezeichnung:")
+art_bezeichnung.grid(row=0, column=0, padx=5, sticky="w")
+art_bezeichnung_entry = ttk.Entry(art_daten_frame)
+art_bezeichnung_entry.grid(row=1, column=0)
+
+art_kalkulation_frame = ttk.LabelFrame(artikel_tab, text="Artikelkalkulation")
+art_kalkulation_frame.grid(row=1, column=1, pady=5, padx=5, sticky="w")
 
 # Sizegrip-Widget hinzufügen
 # "relx" bedeutet: Die relative horizontale Position des Widgets innerhalb seines Elternwidgets, ausgedrückt als Bruchteil der
