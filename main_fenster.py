@@ -6,6 +6,8 @@ from main_fenster_funktionen import *
 from artikel_bearbeiten_fenster import *
 from artikel_hinzufügen_fenster import *
 
+mwst_liste = ["7%", "19%"]
+
 root = tk.Tk()
 root.title("Order Flow")
 
@@ -149,23 +151,57 @@ btn3.grid(row=0, column=4)
 """Artikel Tab"""
 art_nummer_frame = ttk.LabelFrame(artikel_tab, text="Artikelnummer")
 art_nummer_frame.grid(row=0, column=0, pady=5, padx=5, sticky="w")
-art_nummer_entry = ttk.Entry(art_nummer_frame, width=43)
+art_nummer_entry = ttk.Entry(art_nummer_frame)
 art_nummer_entry.grid(row=0, column=0, pady=5, padx=5, sticky="w")
 
 art_daten_frame = ttk.LabelFrame(artikel_tab, text="Artikeldaten")
 art_daten_frame.grid(row=1, column=0, pady=5, padx=5, sticky="w")
 
-#bezeichnung
-#beschreibung
-#lieferant
-
 art_bezeichnung = ttk.Label(art_daten_frame, text="Artikel Bezeichnung:")
 art_bezeichnung.grid(row=0, column=0, padx=5, sticky="w")
 art_bezeichnung_entry = ttk.Entry(art_daten_frame)
-art_bezeichnung_entry.grid(row=1, column=0)
+art_bezeichnung_entry.grid(row=1, column=0, padx=5)
+
+art_beschreibung = ttk.Label(art_daten_frame, text="Artikel Beschreibung:")
+art_beschreibung.grid(row=2, column=0, padx=5, sticky="w")
+art_beschreibung_entry = ttk.Entry(art_daten_frame)
+art_beschreibung_entry.grid(row=3, column=0)
+
+art_lieferant = ttk.Label(art_daten_frame, text="Lieferant:")
+art_lieferant.grid(row=4, column=0, padx=5, sticky="w")
+art_lieferant_entry = ttk.Entry(art_daten_frame)
+art_lieferant_entry.grid(row=5, column=0, pady=(0, 5))
 
 art_kalkulation_frame = ttk.LabelFrame(artikel_tab, text="Artikelkalkulation")
 art_kalkulation_frame.grid(row=1, column=1, pady=5, padx=5, sticky="w")
+
+art_ek = ttk.Label(art_kalkulation_frame, text="Einkaufspreis:")
+art_ek.grid(row=0, column=0, padx=5, sticky="w")
+art_ek_entry = ttk.Entry(art_kalkulation_frame)
+art_ek_entry.grid(row=1, column=0, padx=5)
+
+art_vk = ttk.Label(art_kalkulation_frame, text="Verkaufspreis:")
+art_vk.grid(row=2, column=0, padx=5, sticky="w")
+art_vk_entry = ttk.Entry(art_kalkulation_frame)
+art_vk_entry.grid(row=3, column=0, padx=5)
+
+art_mwst = ttk.Label(art_kalkulation_frame, text="MwSt.:")
+art_mwst.grid(row=4, column=0, padx=5, sticky="w")
+art_mwst_combobox = ttk.Combobox(
+    art_kalkulation_frame,
+    cursor="hand2",
+    values=mwst_liste,
+    width=17
+)
+art_mwst_combobox.grid(row=5, column=0, padx=5, pady=(0, 5))
+
+art_gewinn = ttk.Label(art_kalkulation_frame, text="Artikel Gewinn:")
+art_gewinn.grid(row=0, column=1, padx=5, sticky="w")
+art_gewinn_entry = ttk.Entry(art_kalkulation_frame)
+art_gewinn_entry.grid(row=1, column=1)
+
+art_gewinn_btn = ttk.Button(art_kalkulation_frame, text="Berechnen")
+art_gewinn_btn.grid(row=3, column=1)
 
 # Sizegrip-Widget hinzufügen
 # "relx" bedeutet: Die relative horizontale Position des Widgets innerhalb seines Elternwidgets, ausgedrückt als Bruchteil der
