@@ -15,10 +15,10 @@ def kunde_suchen(kundennummer_entry, anrede_combobox, vorname_entry, nachname_en
 
     # SQL Abfrage
     kunden_abfrage = "SELECT Kunden.Anrede, Kunden.Vorname, Kunden.Nachname, Kunden.Strasse, Kunden.Hausnummer, Kunden.PLZ, " \
-            "Kunden.Stadt, Kontaktdaten.Telefonnummer, Kontaktdaten.Mobil, Kontaktdaten.Mail FROM Kunden INNER JOIN " \
-            "Kontaktdaten ON Kunden.KontaktID = Kontaktdaten.ID WHERE Kunden.ID = ?"
-    
-    kundennummer_tupel = (kundennummer, )
+                     "Kunden.Stadt, Kontaktdaten.Telefonnummer, Kontaktdaten.Mobil, Kontaktdaten.Mail FROM Kunden INNER JOIN " \
+                     "Kontaktdaten ON Kunden.KontaktID = Kontaktdaten.ID WHERE Kunden.ID = ?"
+
+    kundennummer_tupel = (kundennummer,)
 
     # SQL-Abfrage ausführen
     der_cursor.execute(kunden_abfrage, kundennummer_tupel)
@@ -117,9 +117,52 @@ def kunde_aendern(kundennummer_entry, anrede_combobox, vorname_entry, nachname_e
         kontaktdaten_tupel = (telefon, mobil, mail, kontaktID)
         kundendaten_tupel = (anrede, vorname, nachname, strasse, hausnummer, plz, stadt, kundennummer)
 
-                # "der_curser" führt z.B. SQL Abfragen aus
+        # "der_curser" führt z.B. SQL Abfragen aus
         der_curser.execute(update_abfrage_kontakttabelle, kontaktdaten_tupel)
         der_curser.execute(update_abfrage_kundentabelle, kundendaten_tupel)
 
         # Durch den "commit" werden die änderungen dauerhaft gespeichert
         verbindung.commit()
+
+
+def sum_mwst(art_mwst_combobox, art_nvk_entry, sum_mwst_entry, art_bvk_entry):
+    """
+    Diese Funktion berechnet den Bruttoverkaufspreis und die Höhe der MwSt.
+    Parameters
+    ----------
+    art_mwst_combobox
+    art_nvk_entry
+    sum_mwst_entry
+    art_bvk_entry
+
+    Returns
+    -------
+    -/-
+    """
+    mwst_satz = float(art_mwst_combobox.get().replace("%", ""))
+    netto_vk = float(art_nvk_entry.get().replace(",", "."))
+
+    if mwst_satz == 7.0:
+        brutto_vk = round(netto_vk * 1.07, 2)
+        sum_mwst = round(brutto_vk - netto_vk, 2)
+        art_bvk_entry.insert(0, str(brutto_vk).replace(".", ","))
+        sum_mwst_entry.insert(0, str(sum_mwst).replace(".", ","))
+    else:
+        brutto_vk = round(netto_vk * 1.19, 2)
+        sum_mwst = round(brutto_vk - netto_vk, 2)
+        art_bvk_entry.insert(0, str(brutto_vk).replace(".", ","))
+        sum_mwst_entry.insert(0, str(sum_mwst).replace(".", ","))
+
+
+def gewinn(art_nvk_entry, art_gewinn_entry, art_ek_entry):  # ICh muss den EK anstelle des Brutto VK nehmen!!!
+    ek = float(art_ek_entry.get().replace(",", "."))
+    netto_vk = float(art_nvk_entry.get().replace(".", ","))
+
+    gewinn = netto_vk - ek
+
+    art_gewinn_entry.insert(0, str(gewinn).replace(".", ","))
+
+
+def wrapper_mwst_gewinn(art_mwst_combobox, art_nvk_entry, sum_mwst_entry, art_bvk_entry, art_gewinn_entry, art_ek_entry):
+    sum_mwst(art_mwst_combobox, art_nvk_entry, sum_mwst_entry, art_bvk_entry)
+    gewinn(art_nvk_entry, art_gewinn_entry, art_ek_entry)

@@ -13,6 +13,7 @@ SQL Server, sofern man mit mehreren gleichzeitig darauf zuge reifen möchte.
 Das aktuelle GUI wird Step by Step auf- und ausgebaut. Teilweise gibt es noch Platzhalter, oder Elemente die Testweise 
 eingebaut sind.
 # Updates
+- 01.07.2024 → Erste Variante der Berechnungen im "Artikel bearbeiten" Tab.
 - 02.06.2024 → Weitere Arbeiten am "Artikel bearbeiten" Tab.
 - 26.05.2024 → Verlinkung der oberen Menüleiste zum "Neuer Kunde Pop-up-Fenster hinzugefügt". Anfänge des "Artikel bearbeiten" 
   Tabs sind hinzugefügt.

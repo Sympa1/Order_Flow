@@ -129,7 +129,7 @@ checkbox_status = tkinter.BooleanVar()
 newsletter_checkbox = ttk.Checkbutton(kontakt_label_frame, text="Newsletter", variable=checkbox_status)
 newsletter_checkbox.grid(row=6, column=0, padx=5, pady=(20, 4))
 
-# Test Buttons
+# Steuer Buttons
 # Die "lambda" Funktion wird verwendet, um die Parameterübergabe zu ermöglichen.
 btn1 = ttk.Button(kunden_tab, text="Suchen", command=lambda: kunde_suchen(kundennummer_entry, anrede_combobox, vorname_entry,
                                                                           nachname_entry, strasse_entry, hausnummer_entry,
@@ -180,12 +180,12 @@ art_ek.grid(row=0, column=0, padx=5, sticky="w")
 art_ek_entry = ttk.Entry(art_kalkulation_frame)
 art_ek_entry.grid(row=1, column=0, padx=5)
 
-art_vk = ttk.Label(art_kalkulation_frame, text="Verkaufspreis:")
-art_vk.grid(row=2, column=0, padx=5, sticky="w")
-art_vk_entry = ttk.Entry(art_kalkulation_frame)
-art_vk_entry.grid(row=3, column=0, padx=5)
+art_nvk = ttk.Label(art_kalkulation_frame, text="Netto Verkaufspreis:")
+art_nvk.grid(row=2, column=0, padx=5, sticky="w")
+art_nvk_entry = ttk.Entry(art_kalkulation_frame)
+art_nvk_entry.grid(row=3, column=0, padx=5)
 
-art_mwst = ttk.Label(art_kalkulation_frame, text="MwSt.:")
+art_mwst = ttk.Label(art_kalkulation_frame, text="MwSt. Satz:")
 art_mwst.grid(row=4, column=0, padx=5, sticky="w")
 art_mwst_combobox = ttk.Combobox(
     art_kalkulation_frame,
@@ -200,8 +200,19 @@ art_gewinn.grid(row=0, column=1, padx=5, sticky="w")
 art_gewinn_entry = ttk.Entry(art_kalkulation_frame)
 art_gewinn_entry.grid(row=1, column=1)
 
-art_gewinn_btn = ttk.Button(art_kalkulation_frame, text="Berechnen")
-art_gewinn_btn.grid(row=3, column=1)
+sum_mwst = ttk.Label(art_kalkulation_frame, text="Summe der MwSt.:")
+sum_mwst.grid(row=2, column=1, padx=5, sticky="w")
+sum_mwst_entry = ttk.Entry(art_kalkulation_frame)
+sum_mwst_entry.grid(row=3, column=1)
+
+art_bvk = ttk.Label(art_kalkulation_frame, text="Brutto Verkaufspreis:")
+art_bvk.grid(row=4, column=1, padx=5, sticky="w")
+art_bvk_entry = ttk.Entry(art_kalkulation_frame)
+art_bvk_entry.grid(row=5, column=1, padx=5, pady=(0, 5))
+
+art_gewinn_btn = ttk.Button(art_kalkulation_frame, text="Berechnen", style="TButton", command=lambda: wrapper_mwst_gewinn(
+    art_mwst_combobox, art_nvk_entry, sum_mwst_entry, art_bvk_entry, art_gewinn_entry,art_ek_entry))
+art_gewinn_btn.grid(row=5, column=2)
 
 # Sizegrip-Widget hinzufügen
 # "relx" bedeutet: Die relative horizontale Position des Widgets innerhalb seines Elternwidgets, ausgedrückt als Bruchteil der
