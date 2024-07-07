@@ -11,7 +11,7 @@ def neuer_kunde_popup(root):
     neuer_kunde_fenster.title("Order Flow - Neuer Kunde")
 
     # Die Kundendateneingabefelder
-    # Hinzufügen des Abschnitts "Kundennummer"
+    """    # Hinzufügen des Abschnitts "Kundennummer"
     kundennummer_label_frame = ttk.LabelFrame(neuer_kunde_fenster, text="Kundennummer:")
     kundennummer_label_frame.grid(row=0, column=0, pady=5, padx=5, sticky="w")
 
@@ -19,7 +19,7 @@ def neuer_kunde_popup(root):
     kundennummer_entry.grid(row=1, column=0, pady=5, padx=5, sticky="w")
 
     # Füge den Default-Text in das Entry-Widget ein
-    kundennummer_entry.insert(0, "Die Kundennummer wird automatisch generiert!")
+    kundennummer_entry.insert(0, "Die Kundennummer wird automatisch generiert!")"""
 
     # Hinzufügen des Abschnitts "Anschrift"
     anschrift_label_frame = ttk.LabelFrame(neuer_kunde_fenster, text="Anschrift:")

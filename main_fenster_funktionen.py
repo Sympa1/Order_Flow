@@ -166,3 +166,11 @@ def gewinn(art_nvk_entry, art_gewinn_entry, art_ek_entry):  # ICh muss den EK an
 def wrapper_mwst_gewinn(art_mwst_combobox, art_nvk_entry, sum_mwst_entry, art_bvk_entry, art_gewinn_entry, art_ek_entry):
     sum_mwst(art_mwst_combobox, art_nvk_entry, sum_mwst_entry, art_bvk_entry)
     gewinn(art_nvk_entry, art_gewinn_entry, art_ek_entry)
+
+
+def artikel_suchen():
+    pass
+
+
+def artikel_aendern():
+    pass
